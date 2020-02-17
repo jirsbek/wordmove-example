@@ -13,3 +13,10 @@ RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress
+
+
+# Deny access to the sensitive files
+<filesMatch ".env$|readme.html|license.txt">
+	Order allow,deny
+	Deny from all
+</filesMatch>
