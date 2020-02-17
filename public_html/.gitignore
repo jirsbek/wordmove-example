@@ -1,4 +1,5 @@
 .env
+*-backup-*.sql*
 node_modules
 vendor
 wp-config.php
