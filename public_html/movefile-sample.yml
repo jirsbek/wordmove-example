@@ -1,0 +1,122 @@
+global:
+  sql_adapter: "default"
+
+local:
+  vhost: "<%= ENV['LOCAL_VHOST'] %>"
+  wordpress_path: "<%= ENV['LOCAL_WORDPRESS_PATH'] %>" # Use an absolute path here
+
+  database:
+    name: "<%= ENV['LOCAL_DATABASE_NAME'] %>"
+    user: "<%= ENV['LOCAL_DATABASE_USER'] %>"
+    password: "<%= ENV['LOCAL_DATABASE_PASSWORD'] %>"
+    host: "<%= ENV['LOCAL_DATABASE_HOST'] %>"
+    port: "<%= ENV['LOCAL_DATABASE_PORT'] %>"
+
+  # paths:
+  #   wp_content: "wp-content"
+  #   uploads: "wp-content/uploads"
+  #   plugins: "wp-content/plugins"
+  #   mu_plugins: "wp-content/mu-plugins"
+  #   themes: "wp-content/themes"
+  #   languages: "wp-content/languages"
+
+dev:
+  vhost: "<%= ENV['DEV_VHOST'] %>"
+  wordpress_path: "<%= ENV['DEV_WORDPRESS_PATH'] %>"
+
+  database:
+    name: "<%= ENV['DEV_DATABASE_NAME'] %>"
+    user: "<%= ENV['DEV_DATABASE_USER'] %>"
+    password: "<%= ENV['DEV_DATABASE_PASSWORD'] %>"
+    host: "<%= ENV['DEV_DATABASE_HOST'] %>"
+    # port: "3308" # Use just in case you have exotic server config
+
+  exclude:
+    - ".DS_Store"
+    - ".env*"
+    - ".git/"
+    - ".gitignore"
+    - ".gitmodules"
+    - ".idea"
+    - ".remote-sync.json"
+    - ".sass-cache/"
+    - "*.code-workspace"
+    - "*.sql"
+    - "*.sublime-project"
+    - "*.sublime-workspace"
+    - "app/themes/**/src"
+    - "app/themes/**/src/*"
+    - "bin/"
+    - "CHECKLIST.md"
+    - "composer.json"
+    - "composer.lock"
+    - "DEPLOYMENT.md"
+    - "Gemfile*"
+    - "license.txt"
+    - "movefile.yml"
+    - "Movefile"
+    - "node_modules/"
+    - "readme.html"
+    - "sftp-config.json"
+    - "tmp/*"
+    - "wp-config.php"
+
+  # paths:
+  #   wp_content: "wp-content"
+  #   uploads: "wp-content/uploads"
+  #   plugins: "wp-content/plugins"
+  #   mu_plugins: "wp-content/mu-plugins"
+  #   themes: "wp-content/themes"
+  #   languages: "wp-content/languages"
+
+  ssh:
+    host: "<%= ENV['DEV_SSH_HOST'] %>"
+    user: "<%= ENV['DEV_SSH_USER'] %>"
+    # password: "password" # password is optional, will use public keys if available.
+    port: "<%= ENV['DEV_SSH_PORT'] %>" # Port is optional
+    rsync_options: "--verbose" # Additional rsync options, optional
+    # gateway: # Gateway is optional
+    #   host: "host"
+    #   user: "user"
+    #   password: "password" # password is optional, will use public keys if available.
+
+  # ftp:
+  #   user: "user"
+  #   password: "password"
+  #   host: "host"
+  #   passive: true
+  #   scheme: "ftp" # ftps, default "ftp"
+
+  hooks: # Remote hooks won't work with FTP
+    push:
+      before:
+        - command: 'cd "<%= ENV['LOCAL_WORDPRESS_PATH'] %>/wp-content/themes/template/src" && gulp build'
+          where: local
+          raise: true
+  #     after:
+  #       - command: 'echo "do something"'
+  #         where: remote
+  #   pull:
+  #     before:
+  #       - command: 'echo "do something"'
+  #         where: local
+  #         raise: false
+  #     after:
+  #       - command: 'echo "do something"'
+  #         where: remote
+
+  # forbid:
+  #   push:
+  #     db: false
+  #     plugins: false
+  #     themes: false
+  #     languages: false
+  #     uploads: false
+  #     mu-plugins: false
+  #   pull:
+  #     db: false
+  #     plugins: false
+  #     themes: false
+  #     languages: false
+  #     uploads: false
+  #     mu-plugins: false
