@@ -8,6 +8,7 @@
 		<?php if (have_posts()) : ?>
 			<?php while (have_posts()) : the_post(); ?>
 				<?php the_content(); ?>
+				<?php edit_post_link(__('Edit'), '<div class="text-right">', '</div>'); ?>
 			<?php endwhile; ?>
 		<?php endif; ?>
 	</div>

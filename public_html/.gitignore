@@ -1,3 +1,6 @@
 .env
 node_modules
+vendor
 wp-config.php
+wp-content/themes/template/public/css/*
+wp-content/themes/template/public/js/*
