@@ -21,6 +21,13 @@
 		<div class="container">
 
 			<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/public/css/heading.min.css" media="screen">
-			<h1 class="heading">Wordmove Example</h1>
+			<h1 class="heading">
+				Wordmove Example &nbsp;
+				<?php if (substr($_SERVER['REMOTE_ADDR'], 0, 4) == '192.') : ?>
+					💻
+				<?php else : ?>
+					🚀
+				<?php endif; ?>
+			</h1>
 		</div>
 	</header>
