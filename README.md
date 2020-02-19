@@ -1,5 +1,11 @@
 # Wordmove Example 🚀
 
+## Dependences
+- Wordmove (https://github.com/welaika/wordmove)
+- Docker (https://www.docker.com/products/docker-desktop)
+- Composer (https://getcomposer.org)
+- Gulp (https://gulpjs.com)
+
 ## Setup
 1. `$ ./init.sh` runs all commands in step by step setup
 1. Open `http://localhost:8080` for app
