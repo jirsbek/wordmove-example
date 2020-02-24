@@ -13,6 +13,7 @@
     "gulp-plumber": "latest",
     "gulp-rename": "latest",
     "gulp-sass": "latest",
+    "gulp-shell": "^0.8.0",
     "gulp-uglify": "latest",
     "gulp-wp-pot": "latest",
     "lodash.template": ">=4.5.0"
