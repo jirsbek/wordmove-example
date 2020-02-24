@@ -10,6 +10,7 @@ var rename = require('gulp-rename');
 var md5 = require('gulp-md5-assets');
 var wppot = require('gulp-wp-pot');
 var browserSync = require('browser-sync').create();
+const shell = require('gulp-shell')
 
 
 
@@ -144,6 +145,19 @@ gulp.task('browser-sync', gulp.series( function() {
 
 
 
+// Reload
+gulp.task('reload', function(done) {
+	browserSync.reload();
+	done();
+});
+
+
+
+// Wordmove Push Theme
+gulp.task('wordmove', shell.task('cd ../../../.. && wordmove push -t -e dev'))
+
+
+
 // Build All
 gulp.task('build', gulp.series('style', 'javascript-vendor', 'javascript', 'md5-style', 'md5-javascript'));
 
@@ -152,8 +166,8 @@ gulp.task('build', gulp.series('style', 'javascript-vendor', 'javascript', 'md5-
 // Watch
 gulp.task('watch', gulp.series( function() {
 	gulp.watch('scss/**/*.scss', gulp.series('style')); // Watch SCSS
-	gulp.watch('js/**/*.js', gulp.series(['javascript', 'javascript-vendor'])); // Watch JS
-	gulp.watch('../**/*.php').on('change', browserSync.reload); // Watch PHP
+	gulp.watch('js/**/*.js', gulp.series('javascript', 'javascript-vendor')); // Watch JS
+	gulp.watch('../**/*.php', gulp.series('reload')); // Watch PHP
 }));
 
 
