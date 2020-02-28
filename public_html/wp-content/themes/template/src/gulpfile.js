@@ -154,7 +154,7 @@ gulp.task('reload', function(done) {
 
 
 // Wordmove Push Theme
-gulp.task('wordmove', shell.task('cd ../../../.. && wordmove push -t -e dev'))
+gulp.task('wordmove', shell.task('gulp md5-style && cd ../../../.. && wordmove push -t -e dev'))
 
 
 
@@ -166,6 +166,7 @@ gulp.task('build', gulp.series('style', 'javascript-vendor', 'javascript', 'md5-
 // Watch
 gulp.task('watch', gulp.series( function() {
 	gulp.watch('scss/**/*.scss', gulp.series('style')); // Watch SCSS
+	// gulp.watch('scss/**/*.scss', gulp.series('style', 'wordmove')); // Watch SCSS
 	gulp.watch('js/**/*.js', gulp.series('javascript', 'javascript-vendor')); // Watch JS
 	gulp.watch('../**/*.php', gulp.series('reload')); // Watch PHP
 }));
