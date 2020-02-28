@@ -44,8 +44,8 @@ dev:
     - "*.sql"
     - "*.sublime-project"
     - "*.sublime-workspace"
-    - "app/themes/**/src"
-    - "app/themes/**/src/*"
+    - "wp-content/themes/template/src"
+    - "wp-content/themes/template/src/*"
     - "bin/"
     - "CHECKLIST.md"
     - "composer.json"
@@ -107,7 +107,7 @@ dev:
 
   # forbid:
   #   push:
-  #     db: false
+  #     db: true
   #     plugins: false
   #     themes: false
   #     languages: false
