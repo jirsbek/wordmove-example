@@ -7,7 +7,7 @@
 - Gulp (https://gulpjs.com)
 
 ## Setup
-1. `$ ./init.sh` runs all commands in step by step setup
+1. `$ ./setup.sh` runs all commands in step by step setup
 1. Open `http://localhost:8080` for app
 1. Open `http://localhost:8000` for phpMyAdmin
 1. Admin login at `http://localhost:8080/admin` with username `admin` and password `admin`
